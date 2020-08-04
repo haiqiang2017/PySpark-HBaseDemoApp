@@ -57,7 +57,7 @@ def getTrainingDataCatalog():
                      "Occupancy":{"cf":"weather", "col":"Occupancy", "type":"int"}
                    }
                  }""".split())
-  #hello
+  #hello 34
   return catalog
 
 def replaceDateColumn(trainingData):
