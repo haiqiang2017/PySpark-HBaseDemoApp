@@ -17,13 +17,6 @@ spark = SparkSession\
     .builder\
     .appName("WebApp!")\
     .getOrCreate()
-    
-df = spark.read.format("org.apache.hadoop.hbase.spark") \
-  .options(catalog=getBatchScoreTableCatalog()) \
-  .option("hbase.spark.use.hbasecontext", False) \
-  .load()
-  
-df.createOrReplaceTempView("sampleView")
 
 
 def getBatchScoreTableCatalog():
@@ -57,6 +50,13 @@ def getTrainingDataCatalog():
                    }
                  }""".split())
   return catalog
+
+df = spark.read.format("org.apache.hadoop.hbase.spark") \
+  .options(catalog=getBatchScoreTableCatalog()) \
+  .option("hbase.spark.use.hbasecontext", False) \
+  .load()
+  
+df.createOrReplaceTempView("sampleView")
 
 # webapp
 app = Flask(__name__)
@@ -97,7 +97,6 @@ def addToTrainingTable(key, prediction):
 @app.route('/api/predict', methods=['POST', 'GET'])
 def predict():
   keyToUse = request.form['temp6']
-  print(request.form)
   output = grabPredictionFromBatchScoreTable(keyToUse, getBatchScoreTableCatalog())
   
   if request.form['status'] == "Added":
