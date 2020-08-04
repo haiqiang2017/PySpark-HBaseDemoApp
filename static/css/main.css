@@ -79,22 +79,6 @@ button:hover {
 
 }
 
-#recitationLink {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #EEE2DC;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #BAB2B5;
-    color: #AC3B61;
-    font-size: 60px;
-    font-family: verdana;
-    font-weight: bold;
-    text-align: center;
-}
-
 p2 {
     font-family: 'Abel', sans-serif;
     text-align: center;
@@ -109,19 +93,3 @@ p2 {
 
 }
 
-#codeTimer {
-    text-align: center;
-    font-size: 20px;
-}
-
-#recitationCode {
-    color: #AC3B61;
-    font-size: 120px;
-}
-
-#logo {
-    height: 15%;
-    position:absolute;
-    bottom:20px;
-    right:20px;
-}
