@@ -9,56 +9,58 @@
     </script>
 <head>
   <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/main.css') }}">
-	<title>Welcome!</title>
+  <link href="https://fonts.googleapis.com/css?family=Abel|Varela+Round" rel="stylesheet">
+  <title>Demo Application</title>
 
   <meta charset="UTF-8">
 </head>
 <body>
- Here is my current Sensor Data for Room 1
+ <h1>Sensor Data for Room 1</h1>
   <p></p>
   
   
   <!-- <input id = "Temperature", name="he" />-->
   
   
+  <div id="bodyContainer">
+    <form name = sendInputs action = "/api" method = "POST">
+      <p2>Temperature:  
+      <input class ="inputs" id = "Temperature" name="temp" value ="{{temp}}"/> 
+      </p2>
+
+      <p2>Humidity:  
+      <input class ="inputs" id="Humidity" name="temp2" value ="{{temp2}}" /> 
+      </p2>
+
+      <p2>"Light:
+      <input class ="inputs" id="Light" name="temp3" value ="{{temp3}}" /> 
+      </p2>
+
+      <p2>CO2: 
+      <input class ="inputs" id="CO2" name="temp4" value ="{{temp4}}" /> 
+      </p2>
+
+      <p2>HumidityRatio: 
+      <input class ="inputs" id="HumidityRatio" name="temp5" value ="{{temp5}}" /> 
+      </p2>
+
+      <p2>Prediction: 
+      <input class ="inputs predict" id="Prediction" name="output" value ="{{output}}" />
+      </p2>
   
-  <form name = sendInputs action = "/api/predict" method = "POST">
-    <p>Temperature: 
-    <input id = "Temperature" name="temp" value ={{temp}} /> 
-    </p>
-    
-    <p>Humidity: 
-    <input id="Humidity" name="temp2" value ={{temp2}} /> 
-    </p>
-    
-    <p>Light: 
-    <input id="Light" name="temp3" value ={{temp3}} /> 
-    </p>
-    
-    <p>CO2: 
-    <input id="CO2" name="temp5" value ={{temp4}} /> 
-    </p>
-    
-    <p>HumidityRatio: 
-    <input  id="HumidityRatio" name="temp4" value ={{temp5}} /> 
-    </p>
-    
-    <p>All Inputs: 
-    <input id="Inputs" name="temp6" value ="{{temp6}}" />
-    </p>
-
-    <p>Prediction: 
-    <input id="Prediction" name="output" value ="{{output}}" />
-    </p>
-
-    <p> Status:
-    <input type="text" id="hello" name="status" value="{{status}}" />
-    </p>
-
-  </form>
-    
-  <button type="button" value="false" id="regularButton" onclick="change()"> Click this button to Add this Data Point to my training table in HBase! </button>
-
+      <div id="bodyContainer">
+          <p2> Status:
+            <input class ="inputs status" id="Status" name="status" value="{{status}}" />
+            <input type="hidden" id="Inputs" name="temp6" value="{{temp6}}" />
+          </p2>
+            <button type="button" value="false" id="regularButton" onclick="change()"> 
+              Click This Button to Add This Data Point to the Training Table! 
+            </button>
+          
+      </div>
+    </form>
+  
+  
   <script>
     setInterval(function() {
       listOfTemps = [19.0, 19.5, 20.0, 20.5, 21.0, 21.5, 22.0, 22.5, 23.0, 23.5]
@@ -76,15 +78,16 @@
       
       $("#Light").val((listOfLigh[ind3]));
       
-      listOfRats = [.002, .0025, .003, .0035, .004, .0045, .005, .0055, .006, .0065]
-      ind4 = Math.floor(Math.random()*listOfRats.length)
-      
-      $("#HumidityRatio").val((listOfRats[ind4]));
-      
       listOfCO2 = [0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000]
-      ind5 = Math.floor(Math.random()*listOfCO2.length)
+      ind4 = Math.floor(Math.random()*listOfCO2.length)
       
-      $("#CO2").val((listOfCO2[ind5]));
+      $("#CO2").val((listOfCO2[ind4]));
+      
+      listOfRats = [.002, .0025, .003, .0035, .004, .0045, .005, .0055, .006, .0065]
+      ind5 = Math.floor(Math.random()*listOfRats.length)
+      
+      $("#HumidityRatio").val((listOfRats[ind5]));
+      
       
       $("#Inputs").val(document.getElementById('Temperature').value.toString() + ',' + 
                        document.getElementById('Humidity').value.toString()  + ',' +
@@ -92,19 +95,21 @@
                        document.getElementById('CO2').value.toString()  + ',' +
                        document.getElementById('HumidityRatio').value.toString());
       
-      $("#hello").val('Not Added');
+      $("#Status").val("Not Added");
       
       document.sendInputs.submit();
     }, 5000);
     
     function change() {
       var change = document.getElementById("regularButton");
+      
       if (change.value == "false") {
         document.sendInputs.elements["status"].value = "Added";
         document.sendInputs.submit();
       } else {
         change.value = "true";
       }
+      
     }
   </script>
  </body>

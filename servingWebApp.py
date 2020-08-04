@@ -74,7 +74,9 @@ def grabPredictionFromBatchScoreTable(keyToUse, modelResultsCatalog):
 
 
 def addToTrainingTable(key, prediction):
+  print(key)
   splitKey = key.split(',')
+  print(splitKey)
   splitKey = [float(i) for i in splitKey]
   splitKey.insert(0, key)
   splitKey.append(int(prediction))
@@ -94,13 +96,19 @@ def addToTrainingTable(key, prediction):
       
 
 
-@app.route('/api/predict', methods=['POST', 'GET'])
+@app.route('/api', methods=['POST', 'GET'])
 def predict():
   keyToUse = request.form['temp6']
-  output = grabPredictionFromBatchScoreTable(keyToUse, getBatchScoreTableCatalog())
   
+  output = grabPredictionFromBatchScoreTable(keyToUse, getBatchScoreTableCatalog())
+  print(request.form)
   if request.form['status'] == "Added":
     addToTrainingTable(request.form['temp6'], output)
+  
+  if output == 1:
+    output = "Occupied"
+  elif output == 0:
+    output = "Not Occupied"
     
   return render_template("index.html", 
                          output=output, 

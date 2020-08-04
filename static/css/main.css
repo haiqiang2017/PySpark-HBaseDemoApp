@@ -14,50 +14,48 @@ h1 {
     text-align: center;
 }
 
-/*body {
+body {
     background: url(waves.png) repeat 0 0;
-}*/
-
-#Temperature {
-    width: 73%;
-    height: 100%;
-    padding: 12px 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    background-color: #BAB2B5;
-    color: #123C69;
-
-    font-family: verdana;
-    font-weight: bold;
 }
 
-#Humidity {
-    width: 73%;
+.inputs {
+    width: 12%;
     height: 100%;
-    padding: 12px 20px;
+    padding: 12px 10px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     background-color: #BAB2B5;
     color: #123C69;
-
+    text-align: center;
     font-family: verdana;
     font-weight: bold;
+    margin: 5px;
+  
+}
+
+
+.predict {
+    width: 20%;
+    color: #308a7e;  
+}
+
+.status {
+    width: 50%;
+    color: #308a7e; 
 }
 
 button {
     width: 25%;
-    height: 100%;
+    height: 25%;
     background-color: #123C69;
     border: none;
     color: #EEE2DC;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    /*float: right;*/
+    float: center;
     font-family: verdana;
     font-weight: bold;
     border-radius: 4px;
@@ -75,6 +73,10 @@ button:hover {
     margin: auto;
     width: 80%;
     padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
 }
 
 #recitationLink {
@@ -93,16 +95,23 @@ button:hover {
     text-align: center;
 }
 
-h3 {
+p2 {
     font-family: 'Abel', sans-serif;
     text-align: center;
     color: #123C69;
     text-shadow: 1px 1px 1px #BAB2B5;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 48px;
+
+
 }
 
 #codeTimer {
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 #recitationCode {
