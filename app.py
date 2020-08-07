@@ -19,6 +19,7 @@ spark = SparkSession\
     .getOrCreate()
 
 
+#Catalogs
 def getBatchScoreTableCatalog():
     modelResultsCatalog = ''.join("""{
                  "table":{"namespace":"default", "name":"BatchTable", "tableCoder":"PrimitiveType"},
@@ -51,12 +52,7 @@ def getTrainingDataCatalog():
                  }""".split())
   return catalog
 
-df = spark.read.format("org.apache.hadoop.hbase.spark") \
-  .options(catalog=getBatchScoreTableCatalog()) \
-  .option("hbase.spark.use.hbasecontext", False) \
-  .load()
-  
-df.createOrReplaceTempView("sampleView")
+
 
 # webapp
 app = Flask(__name__)
@@ -74,17 +70,17 @@ def grabPredictionFromBatchScoreTable(keyToUse, modelResultsCatalog):
 
 
 def addToTrainingTable(key, prediction):
-  print(key)
+  #Making the row to add to the Training Table
   splitKey = key.split(',')
-  print(splitKey)
   splitKey = [float(i) for i in splitKey]
+  
   splitKey.insert(0, key)
   splitKey.append(int(prediction))
-  l = tuple(splitKey)
-  li = [l]
+  
+  listToConvert = [tuple(splitKey)]
   
   listOfColumns = ['Key', 'Temperature', 'Humidity', 'Light', "CO2", 'HumidityRatio', "Occupancy"]
-  data = spark.createDataFrame(li, listOfColumns)
+  data = spark.createDataFrame(listToConvert, listOfColumns)
   
   data.write.format("org.apache.hadoop.hbase.spark") \
     .options(catalog=getTrainingDataCatalog(), newTable = 5) \
@@ -92,7 +88,7 @@ def addToTrainingTable(key, prediction):
     .save()
   
   data.show()
-  print("I ADDED IT")
+  print("This is now added to HBase Training Data Table")
       
 
 
@@ -127,9 +123,12 @@ def main():
 
 
 if __name__ == '__main__':
-  os.environ["CDSW_READONLY_PORT"]
-  os.environ["CDSW_ENGINE_ID"]
-  os.environ["CDSW_DOMAIN"]
+  df = spark.read.format("org.apache.hadoop.hbase.spark") \
+    .options(catalog=getBatchScoreTableCatalog()) \
+    .option("hbase.spark.use.hbasecontext", False) \
+    .load()
+  df.createOrReplaceTempView("sampleView")
+  
   app.run(port=os.environ["CDSW_APP_PORT"])
     
     

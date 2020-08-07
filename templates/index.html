@@ -24,39 +24,34 @@
   
   <div id="bodyContainer">
     <form name = sendInputs action = "/api" method = "POST">
-      <p2>Temperature:  
-      <input class ="inputs" id = "Temperature" name="temp" value ="{{temp}}"/> 
-      </p2>
+      <div class="col-md-2">
+        <p2>Temperature:</p2>
+        <input class ="inputs" id = "Temperature" name="temp" value ="{{temp}}"/> 
+      
+        <p2>Humidity:</p2>
+        <input class ="inputs" id="Humidity" name="temp2" value ="{{temp2}}" /> 
+        
+        <p2>Light:</p2>
+        <input class ="inputs" id="Light" name="temp3" value ="{{temp3}}" /> 
+        
+        <p2>CO2:</p2>
+        <input class ="inputs" id="CO2" name="temp4" value ="{{temp4}}" /> 
 
-      <p2>Humidity:  
-      <input class ="inputs" id="Humidity" name="temp2" value ="{{temp2}}" /> 
-      </p2>
-
-      <p2>"Light:
-      <input class ="inputs" id="Light" name="temp3" value ="{{temp3}}" /> 
-      </p2>
-
-      <p2>CO2: 
-      <input class ="inputs" id="CO2" name="temp4" value ="{{temp4}}" /> 
-      </p2>
-
-      <p2>HumidityRatio: 
-      <input class ="inputs" id="HumidityRatio" name="temp5" value ="{{temp5}}" /> 
-      </p2>
-
-      <p2>Prediction: 
-      <input class ="inputs predict" id="Prediction" name="output" value ="{{output}}" />
-      </p2>
-  
+        <p2>HumidityRatio:</p2>
+        <input class ="inputs" id="HumidityRatio" name="temp5" value ="{{temp5}}" /> 
+        
+        <p2>Prediction:</p2>
+        <input class ="inputs predict" id="Prediction" name="output" value ="{{output}}" />
+      </div>
+      
       <div id="bodyContainer">
-          <p2> Status:
-            <input class ="inputs status" id="Status" name="status" value="{{status}}" />
-            <input type="hidden" id="Inputs" name="temp6" value="{{temp6}}" />
-          </p2>
-            <button type="button" value="false" id="regularButton" onclick="change()"> 
-              Click This Button to Add This Data Point to the Training Table! 
-            </button>
+        <p3> Status:</p3>
+        <input class ="status" id="Status" name="status" value="{{status}}" />
+        <input type="hidden" id="Inputs" name="temp6" value="{{temp6}}" />
           
+        <button type="button" value="false" id="regularButton" onclick="change()"> 
+          Add This Data Point to the Training Table! 
+        </button>
       </div>
     </form>
   

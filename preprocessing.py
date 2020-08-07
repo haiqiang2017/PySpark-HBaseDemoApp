@@ -21,13 +21,10 @@ def grabDataFromHDFS(local_path):
     
   spark.sparkContext.textFile('hdfs://{0}'.format(local_path)) \
     .map(lambda l: l if l.startswith('"date"') else ','.join(l.split(','))[1:]) \
-    .repartition(1) \
     .saveAsTextFile(hdfs_full_path)
     
   dataframe = spark.read.csv(hdfs_full_path,
-                 inferSchema=True, header=True)
-  dataframe.show()
-  
+                 inferSchema=True, header=True)  
   return dataframe
 
 
@@ -37,7 +34,6 @@ def loadingIntoHBase(data, givenCatalog):
       .options(catalog=givenCatalog, newTable = 5) \
       .option("hbase.spark.use.hbasecontext", False) \
       .save()
-  
   
   print("Added " + json.loads(givenCatalog)["table"]["name"] + " to HBase!")
 
@@ -54,10 +50,9 @@ def getTrainingDataCatalog():
                      "Light":{"cf":"weather", "col":"Light", "type":"double"},
                      "CO2":{"cf":"weather", "col":"CO2", "type":"double"},
                      "HumidityRatio":{"cf":"weather", "col":"HumidityRatio", "type":"double"},
-                     "Occupancy":{"cf":"weather", "col":"Occupancy", "type":"int"}
+                     "Occupancy":{"cf":"weather", "col":"Occupancy", "type":"double"}
                    }
                  }""".split())
-  #hello 34
   return catalog
 
 def replaceDateColumn(trainingData):
@@ -88,7 +83,7 @@ if __name__ == "__main__":
   trainingDataHDFS = grabDataFromHDFS("/tmp/hdfsTrainingData.txt")
   trainingDataHDFS = replaceDateColumn(trainingDataHDFS)
   
-  
+  trainingDataHDFS.show()
   #Putting HDFS Training Data in the HBase Training Table Data
   #This let's have all the training Data all in one place
   loadingIntoHBase(trainingDataHDFS, getTrainingDataCatalog())

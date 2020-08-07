@@ -19,8 +19,8 @@ body {
 }
 
 .inputs {
-    width: 12%;
-    height: 100%;
+    width: 35%;
+    height: 50%;
     padding: 12px 10px;
     display: inline-block;
     border: 1px solid #ccc;
@@ -31,23 +31,36 @@ body {
     text-align: center;
     font-family: verdana;
     font-weight: bold;
+      font-size: 20px;
+
     margin: 5px;
-  
+  float: left;
 }
 
 
 .predict {
-    width: 20%;
     color: #308a7e;  
 }
 
 .status {
-    width: 50%;
-    color: #308a7e; 
+    width: 25%;
+    height: 50%;
+    padding: 12px 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #BAB2B5;
+    color: #308a7e;
+    text-align: center;
+    font-family: verdana;
+    font-weight: bold;
+    margin: 10px; 
+  vertical-align: middle;
 }
 
 button {
-    width: 25%;
+    width: 50%;
     height: 25%;
     background-color: #123C69;
     border: none;
@@ -81,7 +94,25 @@ button:hover {
 
 p2 {
     font-family: 'Abel', sans-serif;
-    text-align: center;
+    text-align: right;
+    color: #123C69;
+    text-shadow: 1px 1px 1px #BAB2B5;
+    font-size: 20px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    line-height: 48px;
+    clear: left;
+      width: 200px;
+    margin: 5px; 
+
+    float: left;
+  
+
+}
+p3 {
+    font-family: 'Abel', sans-serif;
+    text-align: right;
     color: #123C69;
     text-shadow: 1px 1px 1px #BAB2B5;
     font-size: 20px;
@@ -89,7 +120,22 @@ p2 {
     justify-content: center;
     align-items: center;
     line-height: 48px;
+    clear: left;
+    margin: 5px; 
+      width: 50px;
 
+    float: left;
 
+}
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}
+
+.col-md-2 {
+  display: inline-block;
 }
 
