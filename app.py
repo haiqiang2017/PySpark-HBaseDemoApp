@@ -1,10 +1,7 @@
 from flask import Flask, jsonify, render_template, request
 from pyspark.sql import SparkSession
-from pyspark.ml import Pipeline, PipelineModel
 import os
-from flask.logging import default_handler
 import logging
-import json
 
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.DEBUG)
