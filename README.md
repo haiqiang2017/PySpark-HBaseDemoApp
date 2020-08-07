@@ -5,6 +5,9 @@
 This project consists of example code of how to perform operations (put, get, scan) in PySpark on HBase Tables.
 Examples are in the `code-examples` folder of this repository
 
+In addition, this repository contains a demo application of building, training, and serving a simple PySpark ML Model using data from HBase.
+For more information about the demo application, please refer to this [link](https://docs.google.com/document/d/1f4Pe6ggRkD2R1XzK8C8e2E2Qut8_UraZDn3PgTf_Mm4/edit?usp=sharing)
+
 ## How To Run on CDSW
 
 
