@@ -1,4 +1,4 @@
-# PySpark-HBaseDemoApp
+# PySpark-HBase
 
 ## What Is This Repo?
 
