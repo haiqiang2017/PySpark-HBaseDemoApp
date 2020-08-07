@@ -1,5 +1,10 @@
 # PySpark-HBaseDemoApp
 
+## What Is This Repo?
+
+This project consists of example code of how to perform operations (put, get, scan) in PySpark on HBase Tables.
+Examples are in the `code-examples` folder of this repository
+
 ## How To Run on CDSW
 
 
