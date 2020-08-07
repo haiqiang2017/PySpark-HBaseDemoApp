@@ -9,10 +9,10 @@
 
 3. Create a new session with Python3
 4. Run preprocessing.py on your CDSW project
-  - This will put all training data into HBase
+   - This will put all training data into HBase
 5. Upload and Run main.py on your CDSW project
-  - Creates the model
-  - Builds and Scores batch score table
-  - Stores batch score table in HBase
+   - Creates the model
+   - Builds and Scores batch score table
+   - Stores batch score table in HBase
 6. Upload and Run app.py on your CDSW project
-  - In order to view the web application, go to http://<$CDSW_ENGINE_ID>.<$CDSW_DOMAIN>
+   - In order to view the web application, go to http://<$CDSW_ENGINE_ID>.<$CDSW_DOMAIN>
