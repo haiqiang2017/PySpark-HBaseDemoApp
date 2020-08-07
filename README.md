@@ -24,10 +24,10 @@ For more information about the demo application, please refer to this [link](htt
 4. Run preprocessing.py on your CDSW project
    - This will put all training data into HBase
    
-5. Upload and Run main.py on your CDSW project
+5. Run main.py on your CDSW project
    - Creates the model
    - Builds and Scores batch score table
    - Stores batch score table in HBase
    
-6. Upload and Run app.py on your CDSW project
+6. Run app.py on your CDSW project
    - In order to view the web application, go to http://<$CDSW_ENGINE_ID>.<$CDSW_DOMAIN>
