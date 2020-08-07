@@ -8,7 +8,7 @@ Examples are in the `code-examples` folder of this repository
 In addition, this repository contains a demo application of building, training, and serving a simple PySpark ML Model using data from HBase.
 For more information about the demo application, please refer to this [link](https://docs.google.com/document/d/1f4Pe6ggRkD2R1XzK8C8e2E2Qut8_UraZDn3PgTf_Mm4/edit?usp=sharing)
 
-## How To Run on CDSW
+## How To Run This Demo Application through CDSW
 
 
 1. Make sure PySpark and HBase are configured - For reference look at Part 1
